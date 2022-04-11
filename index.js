@@ -14,7 +14,7 @@ const inquirer = require('inquirer');
 const allEmployees = [];
 
 // adding a manager to the all employee array
-const addManager = ( => {
+const addManager = () => {
   return inquirer.prompt([
     {
       type: 'input',
@@ -77,7 +77,7 @@ const addManager = ( => {
     allEmployees.push(manager);
     console.log(manager);
   })
-});
+};
 
 // adding employees/interns to the all employee array
 const addEmployee = () => {
