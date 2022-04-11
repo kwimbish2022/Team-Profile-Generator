@@ -188,3 +188,28 @@ const addEmployee = () => {
     }
   })
 };
+
+const writeFile = data => {
+  fs.writeFile('./dist/index.html', data, err => {
+    // if theres any errors
+    if (err) {
+      console.log(err);
+      return;
+    //when the employee team page has been created
+    } else {
+      console.log("Your all employee page has been created. Please see index.html file.")
+    }
+  })
+};
+
+addManager()
+  .then(addEmployee)
+  .then(allEmployees => {
+    return generateHTML(allEmployees);
+  })
+  .then(pageHTML => {
+    return writeFile(pageHTML);
+  })
+  .catch(err => {
+  console.log(err);
+});
