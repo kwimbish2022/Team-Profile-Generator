@@ -9,7 +9,7 @@ test('creates Engineer object', () => {
 });
 
 // to get their github from getGithub()
-test('gets the Engineers github value', () => {
+test('gets the Engineers github', () => {
   const engineer = new Engineer(employeeName, employeeId, emailAddress, github);
   expect(engineer.getGithub()).toEqual(expect.any(String));
 });

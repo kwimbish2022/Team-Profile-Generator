@@ -39,7 +39,7 @@ const createEngineer = function (engineer) {
       </div>
   </div>
   `
-}
+};
 
 // for the manager card
 const createManager = function (manager) {
@@ -60,7 +60,7 @@ const createManager = function (manager) {
       </div>
   </div>
   `
-}
+};
 
 // lets put this all in an array to get to the page
 generateHTML = (data) => {
@@ -91,12 +91,12 @@ generateHTML = (data) => {
   }
 
   // gotta join them all together :)
-  const employeeCards = groupArray.join('')
+  const employeeCards = groupArray.join('');
 
   // to get the created page
   const createGroup = createGroupPage(employeeCards);
   return createGroup;
-}
+};
 
 // to put it all together into the HTML group page
 const createGroupPage = function (employeeCards) {
@@ -111,24 +111,25 @@ const createGroupPage = function (employeeCards) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- in case I forget, got materialize info from https://materializecss.com/icons.html -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     
     <header>
-      <div class="header" id="header">
-        <span class="header mb-3 h1 w-100 text-center" id="header-text">Group Profile</span>
-      </div>
+      <nav class="navbar" id="navbar">
+        <span class="navbar-type mb-0 h1 w-100 text-center" id="navbar-text">Group Profile</span>
+      </nav>
     </header>
     
-    <div>
+    <main>
       <div class="container">
         <div class="row justify-content-center" id="group-cards">
           <!-- this is where the cards will render from the user input from node -->
           ${employeeCards}
         </div>
       </div>  
-    
-      </div>
+    </main>
+
   </body>
   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
