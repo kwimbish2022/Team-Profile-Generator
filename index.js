@@ -1,16 +1,15 @@
+// node we need
+const fs = require('fs');
+const inquirer = require('inquirer');
+inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
+
 //to link to creating the html page
-const generateHTML = require('./utils/generateHTML.js');
+const generateHTML = require('./utils/generateHTML');
 
 // group profile list (from lib)
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-
-// node we need
-const fs = require('fs');
-const inquirer = require('inquirer');
-
-inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 
 // all employee array
 const allEmployees = [];
@@ -20,7 +19,7 @@ const addEmployee = () => {
   return inquirer.prompt([
     {
       type:'loop',
-      name: 'employees',
+      name: 'employee',
       message: 'Would you like to enter an employee? Y or N (Required)',
       questions: [
         {
