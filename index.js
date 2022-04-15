@@ -11,6 +11,8 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const util = require('util');
 
+inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
+
 // all employee array
 const allEmployees = [];
 
@@ -121,23 +123,26 @@ function writeFile(fileName, data) {
       return console.log(err);
     }
       console.log("Your all employee group page has been created. Please see index.html file.")
-  })
-};
+  });
+}
 
-const writeFileAsync = util.promisify(writeFile);
+// const writeFileAsync = util.promisify(writeFile);
 
 // to initialize app
-async function init() {
-  const data = await addEmployee();
-  generateHTML(data);
-};
-  
-
-//   addEmployee()
-//     .then((answers) => writeFileAsync('index.html', generateHTML(answers)))
-//     .then(() => console.log('Generating'))
-//     .catch((err) => console.log(err));
+// async function init() {
+//   const data = await addEmployee();
+//   generateHTML(data);
 // };
 
-// to call
-init();
+// init();
+
+addEmployee()
+  .then(allEmployees => {
+    return generateHTML(allEmployees);
+  })
+  .then(pageHTML => {
+    return writeFile(pageHTML);
+  })
+  .catch(err => {
+  console.log(err);
+  });
