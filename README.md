@@ -1,16 +1,3 @@
-// tests
-
-// prompts-inquirer; team manager’s name, employee ID, email address, and office number
-    //email must open 
-    //for engineer, github must open
-        //engineer’s name, ID, email, and GitHub username
-            // https://css-tricks.com/all-about-mailto-links/
-        //intern’s name, ID, email, and school
-
-//menu; title
-
-//menu-exit to run html
-
 # Team-Profile-Generator
 ![Github license](http://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -30,10 +17,12 @@ Object Oriented Programming
 * [Questions](#questions)
 
 ## Installation
-Clone the repo from Github and make sure to download Noda and install jest for testing purposes.
+Clone the repo from Github and make sure to download Node and install jest for testing purposes.
 
 ## Usage
 Good overview of using inquirer to get user input data. Video and screenshots below.
+
+https://kwimbish2022.github.io/Team-Profile-Generator/
 
 ## License
 MIT
