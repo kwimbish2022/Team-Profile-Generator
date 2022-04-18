@@ -22,7 +22,15 @@ Clone the repo from Github and make sure to download Node and install jest for t
 ## Usage
 Good overview of using inquirer to get user input data. Video and screenshots below.
 
+https://drive.google.com/file/d/1tPUcgnNla7ZuREBS_PgKv6ZSGzrCRdm9/view
+
 https://kwimbish2022.github.io/Team-Profile-Generator/
+
+<img src="https://github.com/kwimbish2022/Team-Profile-Generator/blob/main/assets/ScreenshotHTML.png" >
+
+<img src="https://github.com/kwimbish2022/Team-Profile-Generator/blob/main/assets/ScreenshotNODEindexjs.png" >
+
+<img src="https://github.com/kwimbish2022/Team-Profile-Generator/blob/main/assets/ScreenshotTDDTest.png" >
 
 ## License
 MIT
