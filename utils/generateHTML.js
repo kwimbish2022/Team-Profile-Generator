@@ -66,6 +66,7 @@ const createManager = function (manager) {
 generateHTML = (data) => {
   // new array, for the cards
   groupArray = [];
+  console.log(data);
 
   for (let i = 0; i <data.length; i++) {
     const employee = data[i];

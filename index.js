@@ -18,73 +18,78 @@ const allEmployees = [];
 const addEmployee = () => {
   return inquirer.prompt([
     {
-      type:'loop',
-      name: 'employee',
-      message: 'Would you like to enter an employee? Y or N (Required)',
-      questions: [
-        {
-          type: 'input',
-          name: 'employeeName',
-          message: 'Enter the employee(s) name.',
-        },
-        {
-          type: 'input',
-          name: 'employeeId',
-          message: 'Enter their employee id number.',
-        },
-        {
-          type: 'input',
-          name: 'emailAddress',
-          message: 'Enter their email address.',
-        },
-        {
-          type: 'list',
-          name: 'role',
-          message: 'What is the employee(s) role?',
-          choices: ['Manager', 'Engineer', 'Intern']
-        },
-        {
-          type: 'input',
-          name: 'officeNumber',
-          message: 'Enter the manager(s) office number.',
-          when: (answers) => answers.role === 'Manager'
-        },
-        {
-          type: 'input',
-          name: 'github',
-          message: 'Enter the employee(s) github user name.',
-          when: (answers) => answers.role === 'Engineer'
-        },
-        {
-          type: 'input',
-          name: 'school',
-          message: 'Enter the intern(s) school.',
-          when: (answers) => answers.role === 'Intern'
-        }
-      ]
+      type: 'list',
+      name: 'role',
+      message: 'What is the employee(s) role?',
+      choices: ['Manager', 'Engineer', 'Intern']
+    },
+    {
+      type: 'input',
+      name: 'employeeName',
+      message: 'Enter the employee(s) name.',
+    },
+    {
+      type: 'input',
+      name: 'employeeId',
+      message: 'Enter their employee id number.',
+    },
+    {
+      type: 'input',
+      name: 'emailAddress',
+      message: 'Enter their email address.',
+    },
+    {
+      type: 'input',
+      name: 'officeNumber',
+      message: 'Enter the manager(s) office number.',
+      when: (answers) => answers.role === 'Manager'
+    },
+    {
+      type: 'input',
+      name: 'github',
+      message: 'Enter the employee(s) github user name.',
+      when: (answers) => answers.role === 'Engineer'
+    },
+    {
+      type: 'input',
+      name: 'school',
+      message: 'Enter the intern(s) school.',
+      when: (answers) => answers.role === 'Intern'
+    },
+    {
+      type: 'confirm',
+      name: 'confirmAddEmployee',
+      message: 'Would you like to add more staff?',
+      default: false
     }
   ])
 
   .then(employeeData => {
     // for all the different employee roles
-    let { employeeName, employeeId, emailAddress, officeNumber, role, github, school } = employeeData;
+    console.log('ed', employeeData);
+    let { employeeName, employeeId, emailAddress, officeNumber, role, github, school, confirmAddEmployee } = employeeData;
     let employee;
 
     if (role === "Manager") {
-      employee = new Manager (employeeName, employeeId, emailAddress, officeNumber);
+      employee = new Manager(employeeName, employeeId, emailAddress, officeNumber);
       console.log(employee);
-    
+
     } else if (role === "Engineer") {
-      employee = new Engineer (employeeName, employeeId, emailAddress, github);
+      employee = new Engineer(employeeName, employeeId, emailAddress, github);
       console.log(employee);
-    
+
     } else if (role === "Intern") {
-      employee = new Intern (employeeName, employeeId, emailAddress, school);
+      employee = new Intern(employeeName, employeeId, emailAddress, school);
       console.log(employee);
     }
 
     allEmployees.push(employee);
-    return allEmployees;
+
+    if (confirmAddEmployee) {
+      return addEmployee(allEmployees);
+    } else {
+      return allEmployees;
+    }
   })
 };
 
@@ -98,7 +103,7 @@ const writeFile = data => {
       return;
     } else {
       console.log("Your all employee group page has been created. Please see index.html file.")
-    }  
+    }
   })
 };
 
@@ -110,5 +115,5 @@ addEmployee()
     return writeFile(pageHTML);
   })
   .catch(err => {
-  console.log(err);
-});
+    console.log(err);
+  });
